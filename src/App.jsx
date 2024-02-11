@@ -46,7 +46,7 @@ function App() {
 
   async function handleYesClick() {
     setYesPressed(true);
-    const response = await fetch('/.netlify/functions/sendSms', {
+    const response = await fetch('/api/send-sms', { // Updated path
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -56,13 +56,13 @@ function App() {
         message: 'Nathalie said yes! Yeyyyyy!',
       }),
     });
-
+  
     if (!response.ok) {
       console.error('Failed to send SMS');
     } else {
       console.log('SMS sent successfully');
     }
-  }
+  }  
 
   function getNoButtonText() {
     return phrases[Math.min(noCount, phrases.length - 1)];
