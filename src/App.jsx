@@ -44,6 +44,26 @@ function App() {
     setCurrentNoPicture(noPictures[noCount % noPictures.length]);
   }
 
+  async function handleYesClick() {
+    setYesPressed(true);
+    const response = await fetch('http://localhost:3001/send-sms', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        phoneNumber: '+639662636144', // Replace with the actual phone number
+        message: 'Nathalie said yes! Yeyyyyy!',
+      }),
+    });
+
+    if (!response.ok) {
+      console.error('Failed to send SMS');
+    } else {
+      console.log('SMS sent successfully');
+    }
+  }
+
   function getNoButtonText() {
     return phrases[Math.min(noCount, phrases.length - 1)];
   }
@@ -61,7 +81,7 @@ function App() {
 
           <div className='text'>Hello, Nathalie! Will you be my Valentine?</div>
           <div>
-            <button className='yesButton' style={{ fontSize: yesButtonSize, backgroundColor: 'green', color: 'white' }} onClick={() => setYesPressed(true)}>
+            <button className='yesButton' style={{ fontSize: yesButtonSize, backgroundColor: 'green', color: 'white' }} onClick={handleYesClick}>
               Yes
             </button>
             <button onClick={handleNoClick} className='noButton' style={{ backgroundColor: 'red', color: 'white' }}>

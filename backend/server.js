@@ -20,7 +20,7 @@ app.post('/send-sms', (req, res) => {
   client.messages
     .create({
       body: message,
-      from: '+16592765139',
+      from: '+16596007371', //twilio phone number
       to: phoneNumber,
     })
     .then((message) => {

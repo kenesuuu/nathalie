@@ -15,8 +15,12 @@
 .yesButton,
 .noButton {
   padding: 12px; 
-  font-size: 18px; 
+  font-size: 15px; 
   font-family: 'Arial', sans-serif; 
   margin: 5px;
   outline: none;
+}
+
+.noButton:hover {
+  cursor: pointer;
 }
