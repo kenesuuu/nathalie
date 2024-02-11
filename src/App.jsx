@@ -46,7 +46,7 @@ function App() {
 
   async function handleYesClick() {
     setYesPressed(true);
-    const response = await fetch('http://localhost:3001/send-sms', {
+    const response = await fetch('/.netlify/functions/sendSms', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
