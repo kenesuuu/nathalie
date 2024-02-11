@@ -29,8 +29,8 @@ export default async function handler(req, res) {
       console.log('SMS sent successfully:', result.sid);
       res.status(200).json({ status: 'success', message: result.sid });
     } catch (err) {
-      console.error('Failed to send SMS:', err.message);
-      res.status(500).json({ status: 'error', message: err.message });
+      console.error('Failed to send SMS:', err.message); // Log error message
+      res.status(500).json({ status: 'error', message: 'Failed to send SMS' });
     }
   } else {
     // Handle any other HTTP methods
